@@ -1,0 +1,4 @@
+2024-04-04 04:30:01,715 - research_crew - INFO - Starting research run
+2024-04-04 04:30:04,840 - research_crew - INFO - Agents created
+2024-04-04 04:30:04,842 - research_crew - INFO - Tasks established
+2024-04-04 04:34:04,603 - research_crew - INFO - Research Result: my best complete final answer to the task.

@@ -1,0 +1,4 @@
+2024-04-04 23:57:47,367 - research_crew - INFO - Starting research run
+2024-04-04 23:57:50,352 - research_crew - INFO - Agents created
+2024-04-04 23:57:50,353 - research_crew - INFO - Tasks established
+2024-04-05 00:13:42,390 - research_crew - INFO - Research Result: Agent stopped due to iteration limit or time limit.

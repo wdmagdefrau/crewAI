@@ -1,0 +1,3 @@
+2024-04-02 18:00:24,980 - research_crew - INFO - Starting research run
+2024-04-02 18:00:35,718 - research_crew - INFO - Agents created
+2024-04-02 18:00:35,719 - research_crew - INFO - Tasks established
