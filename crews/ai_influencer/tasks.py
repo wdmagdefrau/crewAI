@@ -7,6 +7,7 @@ import json
 from datetime import datetime
 import uuid
 
+'''
 class Task:
     def __init__(self, description, expected_output, agent):
         self.description = description
@@ -48,7 +49,13 @@ class Task:
             txt_file.write(f"Expected Output: {task_entry['expected_output']}\n")
             txt_file.write(f"Actual Output: {task_entry['actual_output']}\n")
             txt_file.write("\n")
+'''
 
+# Create a directory for the log files if it doesn't exist
+os.makedirs('crews/ai_influencer/logs', exist_ok=True)
+
+# Create a file handler that writes to a new file for each run of the program
+timestamp = datetime.now().strftime('%Y%m%d%H%M%S')
 
 class ResearchTasks:
     def __tip_section(self):
@@ -60,14 +67,19 @@ class ResearchTasks:
                 f"""
                 **Task**: Conduct a comprehensive analysis of the latest advancements in Artificial Intelligence in 2024.
                 **Description**: Search the internet and academic journals for RECENT news on {topic}.
+                    Validate that all sources are from the last 30 days.
                     Identify key trends, breakthrough technologies, and potential industry impacts.
+                    Compile your findings in a detailed report.
                 **Parameters**: 
                     - Topic: {topic}
                 **Note**: {self.__tip_section()}
 
                 """), 
             expected_output="Full analysis report in bullet points with links to reference articles that support each bullet point.", 
-            agent=agent)
+            agent=agent,
+            #human_input=True,
+            output_file=f'crews/ai_influencer/logs/research_report_{timestamp}.txt'
+            )
     
     def draft(self, agent):
         return Task(
@@ -84,7 +96,9 @@ class ResearchTasks:
 
                 """), 
             expected_output="An informative yet accessible LinkedIn post.", 
-            agent=agent)
+            agent=agent,
+            output_file=f'crews/ai_influencer/logs/linkedin_posts_{timestamp}.txt'
+            )
 
     def critique(self, agent):
         return Task(

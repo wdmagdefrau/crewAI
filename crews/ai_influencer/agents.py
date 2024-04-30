@@ -1,12 +1,18 @@
+from tools.exa_search_tool import ExaSearchTool
 from crewai import Agent
 from textwrap import dedent
 from langchain_openai import ChatOpenAI
+from langchain_openai import AzureChatOpenAI    
+from langchain_anthropic import ChatAnthropic
 from logging_util import get_logger
 from langchain.agents import load_tools
+from dotenv import load_dotenv
+import os
 
 from tools.search_tools import SearchTools
 from tools.browser_tools import BrowserTools
 from tools.academic_search_tools import AcademicSearchTools
+
 
 '''
 class Agent:
@@ -28,6 +34,8 @@ class Agent:
 
 human_tools = load_tools(['human'])
 
+load_dotenv()
+
 class ResearchAgents:
     def __init__(self):
         self.OpenAIGPT35 = ChatOpenAI(
@@ -38,26 +46,34 @@ class ResearchAgents:
             model_name="gpt-4-0125-preview", 
             temperature=0.7
         )
+        self.AzureGPT4 = AzureChatOpenAI(api_key=os.getenv("AZURE_OPENAI_KEY"), 
+                                    openai_api_version=os.getenv("AZURE_OPENAI_VERSION"),
+                                    azure_endpoint=os.getenv("AZURE_OPENAI_ENDPOINT"),
+                                    deployment_name='GPT4',
+                                    model_version='gpt-4-0125-preview',
+                                    #model_version='gpt-4-turbo-2024-04-09',
+                                    temperature=0.7)
+        self.AnthroClaude3 = ChatAnthropic(model='claude-3-opus-20240229',
+                                             anthropic_api_key=os.getenv("ANTHROPIC_API_KEY"),
+                                             temperature=0.7)
+
         #log_message("ResearchAgents", "Agents initialized")
 
     def researcher(self):
         #log_message("Researcher", "Researcher agent created")
         return Agent(
             role='Senior Research Analyst',
-            goal='Uncover cutting-edge developments in Artificial Intelligence and data science.',
+            goal='Uncover cutting-edge developments in Artificial Intelligence and data science by focusing on verifying and reporting only recently published articles and information.',
             backstory="""You work at a leading tech think tank.
-                Your expertise lies in identifying emerging trends.
+                Your expertise lies in identifying emerging trends by focusing on verifying and reporting recently published articles and information.
                 You have a knack for dissecting complex data and presenting actionable insights.
                 Make sure to check with a human if the draft is good before finalizing your answer.
                 """,
             verbose=True,
             allow_delegation=False,
-            tools=[
-                SearchTools.search_internet,
-                AcademicSearchTools.search_academic_papers,
-                BrowserTools.scrape_and_summarize_website
-            ] + human_tools,
-            llm=self.OpenAIGPT4
+            tools=ExaSearchTool.tools(),
+            llm=self.AzureGPT4
+            #llm=self.AnthroClaude3
         )
     
     def influencer(self):
@@ -74,13 +90,8 @@ class ResearchAgents:
                 """,
             verbose=True,
             allow_delegation=True,
-            tools=[
-                SearchTools.search_internet,
-                SearchTools.search_linkedin,
-                #AcademicSearchTools.search_academic_papers,
-                #BrowserTools.scrape_and_summarize_website
-            ] + human_tools,
-            llm=self.OpenAIGPT35
+            tools=ExaSearchTool.tools(),
+            llm=self.AzureGPT4
         )
     
     
@@ -94,12 +105,8 @@ class ResearchAgents:
                 Your feedback improves reader engagement to help posts go viral.""",
             verbose=True,
             allow_delegation=True,
-            tools=[
-                SearchTools.search_internet,
-                AcademicSearchTools.search_academic_papers,
-                BrowserTools.scrape_and_summarize_website
-            ],
-            llm=self.OpenAIGPT35
+            tools=ExaSearchTool.tools(),
+            llm=self.AzureGPT4
         )
 
     def chief_creative_director(self):
@@ -115,12 +122,8 @@ class ResearchAgents:
                     marketing specialized in product branding. You're working on a new
                     customer, trying to make sure your team is crafting the best possible
                     content for the customer."""),
-                tools=[
-                    BrowserTools.scrape_and_summarize_website,
-                    SearchTools.search_internet,
-                    SearchTools.search_instagram
-                ],
-                llm=self.OpenAIGPT35,
+                tools=ExaSearchTool.tools(),
+                llm=self.AzureGPT4,
                 verbose=True
         )
 

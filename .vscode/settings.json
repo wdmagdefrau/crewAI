@@ -1,5 +1,6 @@
 {
     "python.analysis.extraPaths": [
-        "./crews/researcher"
+        "./crews/researcher",
+        "./crews/cfo_research"
     ]
 }

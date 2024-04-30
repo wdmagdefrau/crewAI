@@ -1,0 +1,15 @@
+The following is a comprehensive list of alternative content sources related to the topic of leveraging AI for practical tasks, as seen in the original LinkedIn post:
+
+1. **Fixing things with AI: r/oddlysatisfying** - A Reddit post that captures the satisfaction of using AI for fixing or improving things. The post is a testament to the growing interest in AI applications for everyday problems. [Link](https://www.reddit.com/r/oddlysatisfying/comments/1444yr9/fixing_things_with_ai/?rdt=50275)
+
+2. **Fixing Issues in AWS VPC with AI Help** by Andrii Melashchenko - This article documents a personal project where AI, specifically a Generative AI, is used to help resolve AWS VPC configuration issues. It showcases how AI can streamline and simplify technical troubleshooting processes. [Link](https://dev.to/aws-builders/fixing-issues-in-aws-vpc-with-ai-help-5c8p)
+
+3. **16 Photos Before And After This AI-Powered Tool Fixed Them Look Too Good To Be True** by Andželika on Bored Panda - This article highlights NVIDIA's AI tool's capabilities in photo restoration, showing before and after examples. It emphasizes the power of AI in creative and restoration tasks. [Link](https://www.boredpanda.com/ai-content-aware-fill-photo-reconstruction-nvidia/)
+
+4. **I Used Artificial Intelligence to Write an Article and Here’s What Happened** by Apostolos Dedeloudis on Medium - The author shares his experiment of using AI to write an article, exploring the limits and capabilities of AI in content creation. [Link](https://medium.com/swlh/i-used-artificial-intelligence-to-write-an-article-and-heres-what-happened-cb4f5473d9b8)
+
+5. **This free online service uses machine learning to restore old photos** by Mark Frauenfelder on Boing Boing - The article discusses "Hotpot", an AI service that restores old photos, highlighting the practical application of AI in preserving memories. [Link](https://boingboing.net/2021/02/18/this-free-online-service-uses-machine-learning-to-restore-old-photos.html)
+
+6. **How to use AI to unstick yourself** by Ethan Mollick on One Useful Thing - This article explores how generative AI can be a valuable tool in overcoming creative blocks, providing practical advice for leveraging AI in the creative process. [Link](https://www.oneusefulthing.org/p/how-to-use-ai-to-unstick-yourself)
+
+These sources offer insights into the diverse applications of AI across different fields, from technical troubleshooting and photo restoration to enhancing creativity and problem-solving. They serve as valuable alternative content sources that align with the themes and style of the original LinkedIn post.

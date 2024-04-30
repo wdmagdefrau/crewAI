@@ -59,7 +59,6 @@ class ResearchCrew:
 
         researcher = agents.researcher()
         influencer = agents.influencer()
-        critic = agents.critic()
 
         research = tasks.research(
             researcher, 
@@ -70,23 +69,23 @@ class ResearchCrew:
             influencer
         )
 
-        critique = tasks.critique(
-            critic
-        )
-
         crew = Crew(
             agents = [researcher,
-                      influencer,
-                      #critic
+                      influencer
                       ],
             tasks = [research,
-                     draft,
-                     #critique
+                     draft
                      ],
             verbose=True,
-            manager_llm=ChatOpenAI(temperature=0, model="gpt-4-0125-preview"),
-            process=Process.hierarchical
-            #process=Process.sequential
+            #manager_llm=ChatOpenAI(temperature=0, model="gpt-4-0125-preview"),
+                        #manager_llm=AzureChatOpenAI(api_key=os.getenv("AZURE_OPENAI_KEY"), 
+            #                             openai_api_version=os.getenv("AZURE_OPENAI_VERSION"),
+            #                             azure_endpoint=os.getenv("AZURE_OPENAI_ENDPOINT"),
+            #                             deployment_name='GPT4',
+            #                             model_version='gpt-4-0125-preview',
+            #                             temperature=0),
+            #process=Process.hierarchical
+            process=Process.sequential
         )
         #log_message("ResearchCrew", "Starting crew kickoff")
         result = crew.kickoff()
