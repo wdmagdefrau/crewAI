@@ -78,7 +78,7 @@ class Task:
 '''
 
 # Create a directory for the log files if it doesn't exist
-os.makedirs('crews/ai_influencer/logs', exist_ok=True)
+os.makedirs('crews/li_influencer/logs', exist_ok=True)
 
 # Create a file handler that writes to a new file for each run of the program
 timestamp = datetime.now().strftime('%Y%m%d%H%M%S')
